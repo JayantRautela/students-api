@@ -13,9 +13,9 @@ type HTTpServer struct {
 }
 
 type Config struct {
-	Env         string `yml:"env" env:"ENV" env-required:"true"` //env-default:"production"
-	StoragePath string `yml:"storage_path" env-required:"true"`
-	HTTpServer `yml:"http_server"`
+	Env         string `yaml:"env" env:"ENV" env-required:"true"` //env-default:"production"
+	StoragePath string `yaml:"storage_path" env-required:"true"`
+	HTTpServer `yaml:"http_server"`
 }
 // these are struct tags
 
