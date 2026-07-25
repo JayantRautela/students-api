@@ -29,3 +29,4 @@ go.work.sum
 # .vscode/
 
 storage
+.DS_Store
