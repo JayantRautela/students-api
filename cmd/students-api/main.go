@@ -36,8 +36,8 @@ func main() {
 	router.HandleFunc("POST /api/students", student.New(storage))
 
 	// server setup
-	server := http.Server {
-		Addr: cfg.Addr,
+	server := http.Server{
+		Addr:    cfg.Addr,
 		Handler: router,
 	}
 
@@ -48,20 +48,20 @@ func main() {
 	signal.Notify(done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 
 	// go routine
-	go func()  {
+	go func() {
 		err := server.ListenAndServe()
 
 		if err != nil {
 			log.Fatal("Failed to start server")
 		}
-	} ()
+	}()
 
-	<- done
+	<-done
 
 	// graceful shutdown
 	slog.Info("Shutting down the server")
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5 * time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
 	err = server.Shutdown(ctx)
